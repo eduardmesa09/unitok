@@ -57,7 +57,7 @@ Requisitos previos:
   4. Tener el proyecto ubicado en: /var/www/html/unitok
   5. Tener permisos para crear y usar una base de datos llamada “unitok”.
 
-##Paso 1: Verificar/encender Apache
+Paso 1: Verificar/encender Apache
 
 Revisar estado:
  sudo systemctl status apache2
@@ -65,17 +65,17 @@ Revisar estado:
 Si no está activo, iniciarlo:
  sudo systemctl start apache2
 
-##Paso 2: Entrar a MySQL
+Paso 2: Entrar a MySQL
 
 Abrir MySQL (si tu root tiene contraseña, te la pedirá):
  mysql -u root -p
 
-##Paso 3: Ejecutar el DDL (crear estructura)
+Paso 3: Ejecutar el DDL (crear estructura)
 
 Dentro de MySQL, ejecutar el script DDL:
  SOURCE /var/www/html/unitok/sql/01_ddl_unitok.sql;
 
-##Paso 4: Cargar datos iniciales (DML)
+Paso 4: Cargar datos iniciales (DML)
 
 Dentro de MySQL, cargar datos básicos:
   SOURCE /var/www/html/unitok/sql/02_datos_iniciales.sql;
@@ -83,17 +83,17 @@ Dentro de MySQL, cargar datos básicos:
 Cargar datos extra (más usuarios y +50 videos):
   SOURCE /var/www/html/unitok/sql/03_datos_extra_videos.sql;
 
-##Paso 5: Crear el trigger (notificaciones por like)
+Paso 5: Crear el trigger (notificaciones por like)
 
 Dentro de MySQL, ejecutar el trigger:
   SOURCE /var/www/html/unitok/sql/04_trigger_notificaciones.sql;
 
-##Paso 6 (opcional): Ejecutar vistas / scripts extra
+Paso 6 (opcional): Ejecutar vistas / scripts extra
 
 Si existe el archivo para vistas o ejemplos:
   SOURCE /var/www/html/unitok/sql/05_vista_y_demo_transaccion.sql;
 
-##Paso 7: Configurar credenciales en PHP
+Paso 7: Configurar credenciales en PHP
 
 Abrir el archivo:
   nano /var/www/html/unitok/config.php
@@ -108,7 +108,7 @@ Verificar el usuario de demo:
   $USUARIO_DEMO_ID = 2;
 (Asegúrate de que exista un usuario con id_usuario=2 en la tabla usuarios, esto lo crean los scripts DML.)
 
-##Paso 8: Abrir la demo en el navegador
+Paso 8: Abrir la demo en el navegador
 
 Ir a:
   http://localhost/unitok/index.php
@@ -119,7 +119,7 @@ Deberías ver:
   - Corazones de like/unlike junto al contador de likes
   - Caja de texto y botón para reportar cada video
 
-##Paso 9: Qué probar en la demo
+Paso 9: Qué probar en la demo
 
 Consulta: el feed de videos públicos aparece en index.php con autores y conteo de likes.
 
@@ -130,9 +130,9 @@ O, simplemente dar click en la seccion notificaciones para ver que se creó una 
 
 Transacción: reportar un video con el formulario “Reportar”; el sistema inserta el reporte y cambia el estado del video a “reportado”, por eso desaparece del feed (porque el feed filtra estado_video='normal').
 
-##En la carpeta docs/ se incluyen los recursos de las entregas previas
+En la carpeta docs/ se incluyen los recursos de las entregas previas
 
-#Créditos
+Créditos
 
 Proyecto desarrollado por: Eduard meza Salazar
 
